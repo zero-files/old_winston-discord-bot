@@ -1,4 +1,4 @@
-const {RichEmbed} = require("discord.js")
+import {MessageEmbed} from "discord.js"
 import Command from "../utils/Command"
 
 const me = new Command({
@@ -16,10 +16,9 @@ me.setCommand((message, ...rp)=>{
 
     message.delete()
 
-    let embed = new RichEmbed()
+    let embed = new MessageEmbed({image: {url:"https://i.imgur.com/FI5whva.png"}})
         .setColor("#603085")
-        .setAuthor(message.member.nickname || message.author.username, message.author.avatarURL)
-        .setImage("https://i.imgur.com/FI5whva.png")
+        .setAuthor(message.member.nickname || message.author.username, message.author.avatarURL())
         .setDescription(roleplay)
 
     return message.channel.send(embed)
