@@ -1,0 +1,38 @@
+{
+  "name": "winston-discord-bot",
+  "version": "1.0.0",
+  "description": "Winston bot for Discord ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node -r esm .",
+    "dev": "cross-env NODE_ENV=development nodemon -r esm ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winston-bot/winston-discord-bot.git"
+  },
+  "keywords": [
+    "Winston",
+    "Discord",
+    "Bot"
+  ],
+  "author": "Enzo Diaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/winston-bot/winston-discord-bot/issues"
+  },
+  "homepage": "https://github.com/winston-bot/winston-discord-bot#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "discord.js": "^12.2.0",
+    "esm": "^3.2.25",
+    "firebase-admin": "^8.12.1",
+    "google-images": "^2.1.0",
+    "mathjs": "^7.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
