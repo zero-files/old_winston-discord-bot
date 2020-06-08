@@ -153,7 +153,7 @@ class Bot extends Client {
         })
 
         const tips = [
-            "Mira a ambos lados antes de cruzar la calle"
+            "Visita mi repositorio oficial https://github.com/winston-bot/winston-discord-bot"
         ]
 
         const fullHelpEmbed = new MessageEmbed()
