@@ -14,4 +14,4 @@ const key = {
     "client_x509_cert_url": `https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-sdfyv%40${process.env.PID}.iam.gserviceaccount.com`
 }
 
-module.exports = key
+export default key

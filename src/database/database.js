@@ -1,5 +1,5 @@
-const admin = require("firebase-admin")
-const key = require("./key")
+import admin from "firebase-admin"
+import key from "./key"
 
 admin.initializeApp({
     credential: admin.credential.cert(key),
@@ -7,27 +7,31 @@ admin.initializeApp({
 });
 
 const db = admin.firestore()
+const presets = db.collection("presets").doc("presets")
+const server = id => db.collection(id)
 
-const get = {
+export const get = {
+    presets: () => presets.get().then(doc => doc.data()),
+    serverModules: id => server(id).doc("modules").get().then(doc => doc.data()),
+    serverData: id => server(id).get().then(q => q.size ? q.docs[0].data() : undefined)
 }
 
-const put = {
+export const put = {
+    serverData: async data => {
+        await server(data.data.id).doc("modules").set(data.modules)
+        await server(data.data.id).doc("server").set(data.data)
+        await server(data.data.id).doc("config").set(data.config)
+        let config = {}
+        config[data.data.id] = data.config
+        await presets.set(config,{merge:true})
+    }
 }
 
-const del = {
+export const del = {
 }
 
-const patch = {
+export const patch = {
 }
 
-const check = {
-}
-
-
-module.exports = {
-    get,
-    put,
-    del,
-    patch,
-    check,
+export const check = {
 }
