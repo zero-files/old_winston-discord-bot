@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV == "development") require("dotenv").config()
 import Bot from "./bot/bot"
-import path from "path"
+import path from "path" 
 
 const bot = new Bot({
     on_ready_log: "Beepboop o/",
@@ -10,6 +10,11 @@ const bot = new Bot({
 })
 
 async function main(){
+    bot.prestart = () => new Promise((resolve, reject) => {
+        bot.addCommand(bot.createHelpCommand())
+        resolve()
+    })
+
     bot.on("message", message => {
         if(!message.content.startsWith(bot.prefix) || message.author.bot) return
         bot.commandHandler(message)

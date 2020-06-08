@@ -1,4 +1,4 @@
-import {Client, Message} from "discord.js"
+import {Client, Message, MessageEmbed} from "discord.js"
 import {readdirSync} from "fs"
 import path from "path"
 import Command from "../utils/Command"
@@ -70,8 +70,8 @@ class Bot extends Client {
      * @param {string} token Api Token del Bot
      */
     async start(token){
-        await this.prestart()
         await this.commander()
+        await this.prestart()
 
         this.login(token)
     }
@@ -136,6 +136,66 @@ class Bot extends Client {
             this.commands.push(command)
             this.commandList.push(command.trigger)
         }
+    }
+
+    /**
+     * Crea el comando de ayuda
+     * @returns {Command}
+     */
+    createHelpCommand(){
+        const help = new Command({
+            name: "Help",
+            trigger: this.help_command,
+            description: "Comando de ayuda.",
+            category: "utility",
+            author: this.name,
+            parameters: ["Comando"]
+        })
+
+        const tips = [
+            "Mira a ambos lados antes de cruzar la calle"
+        ]
+
+        const fullHelpEmbed = new MessageEmbed()
+            .setColor("#007cbe")
+            .setTitle("Comandos")
+            .setDescription(`Lista completa de comandos.\nUsa \`${this.prefix}${this.help_command}\` \`<command>\` para ver más información sobre ese comando.`)
+            .setFooter(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, "https://i.imgur.com/hY4CqMQ.png")
+
+        for(let i = 0; i < this.commands.length; i++){
+            let command = this.commands[i]
+            fullHelpEmbed.addField(`${this.prefix}${command.trigger}`, command.description)
+        }
+        
+        help.setCommand((message, userCommand) => {
+            if(userCommand) {
+                const commandHelpEmbed = new MessageEmbed()
+                    .setColor("#007cbe")
+                    .setFooter(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, "https://i.imgur.com/hY4CqMQ.png")
+
+                let command = this.commands.find(command => command.trigger === userCommand)
+                
+                if(!command) return message.channel.send(`El comando '${userCommand}' no existe.`)
+
+                commandHelpEmbed.setTitle(command.name)
+                commandHelpEmbed.setDescription(command.description)
+                commandHelpEmbed.addField("Trigger", command.trigger)
+                commandHelpEmbed.addField("Category", command.category)
+                commandHelpEmbed.addField('\u200b', '\u200b')
+                commandHelpEmbed.addField("Parameters", "Parameters list.\n`*` is required")
+                
+                command.parameters.forEach(parameter => {
+                    commandHelpEmbed.addField(parameter, "Sin descripcion", true)
+                })
+
+                commandHelpEmbed.addField('\u200b', '\u200b')
+                commandHelpEmbed.addField("Author", command.author)
+
+                return message.channel.send(commandHelpEmbed)
+            } else return message.channel.send(fullHelpEmbed)
+        })
+
+        return help
     }
 }
 
