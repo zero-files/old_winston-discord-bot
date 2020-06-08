@@ -23,7 +23,7 @@ imagesearch.setCommand((message, ...words) => {
     else {
         imgSearch.search(query).then(imgs => {
             imgs = JSON.parse(JSON.stringify(imgs, ["url"]))
-            imgs.filter(img => URL.parse(img).hostname != "fbsbx.com")
+                .filter(img => URL.parse(img.url).hostname != "lookaside.fbsbx.com")
             if(imgs.length === 0) return message.channel.send(`No encontré nada para '${query}' en internet.`)
             else return message.channel.send(imgs[Math.floor((Math.random()*3)+1)].url)
         })
