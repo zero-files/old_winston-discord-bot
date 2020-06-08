@@ -10,7 +10,6 @@ import Command from "../utils/Command"
  * @property {string} on_ready_log Mensaje de consola para cuando el bot esté listo. 
  * @property {string} commands_folder Carpeta contenedora de comandos.
  * @property {string} help_command Trigger para el comando de ayuda, por defecto "help"
- * @property {string} about_command Trigger para el comando de acerca de, por defecto "about"
  *
  */
 
@@ -45,9 +44,6 @@ class Bot extends Client {
 
         /** Comando de ayuda */
         this.help_command = options.help_command ? options.help_command.toLowerCase().trim() : "help"
-
-        /** Comando de acerca de */
-        this.about_command = options.about_command ? options.about_command.toLowerCase().trim() : "about"
 
         /** Ubicación de los comandos */
         this.commands_folder = options.commands_folder || ""
