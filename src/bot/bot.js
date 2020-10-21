@@ -55,7 +55,7 @@ class Bot extends Client {
             this.user.setPresence({
                 status: 'online',
                 activity: {
-                    name: "🎃"
+                    name: "halloween 🎃"
                 }
             })
             
