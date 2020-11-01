@@ -51,16 +51,7 @@ class Bot extends Client {
         /** Memoria interna del bot */
         this.memory = new Map()
 
-        this.on("ready", () => {
-            this.user.setPresence({
-                status: 'online',
-                activity: {
-                    name: "halloween 🎃"
-                }
-            })
-            
-            console.log(options.on_ready_log || "Bot is ready")
-        })
+        this.on("ready", () => console.log(options.on_ready_log || "Bot is ready"))
     }
 
     /**
