@@ -104,4 +104,4 @@ dist
 .tern-port
 
 #Project ignores
-src/commands/_*
+*.js
