@@ -20,7 +20,7 @@ class Main {
             discord_client: client
         });
 
-        winston.add_command_handling();
+        winston.enable_command_handling();
 
         const ready_channel = winston.new_EventChannel("ready");
         const ready_log = new ReadyLog();
