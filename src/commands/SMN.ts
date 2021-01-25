@@ -16,7 +16,7 @@ export default class SMN extends Command {
     }
 
     public executed(message:Message, ...words:string[]):void {
-        const city = words.join();
+        const city = words.join(" ");
 
         if(!city){
             message.channel.send("Indica el nombre de la ciudad.");

@@ -29,7 +29,7 @@ export default class Dice extends Command {
     ]
 
     public executed(message:Message, ...words:string[]):void {
-        const sentence = words.join();
+        const sentence = words.join(" ");
 
         if(!sentence) {
             message.channel.send("Hazme una pregunta primero");

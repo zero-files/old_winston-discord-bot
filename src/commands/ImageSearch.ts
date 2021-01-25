@@ -21,7 +21,7 @@ export default class ImageSearch extends Command {
     }
 
     public executed(message:Message, ...words:string[]):void {
-        const query = words.join();
+        const query = words.join(" ");
         if(!query) {
             message.channel.send("¿Qué imagen deseas que busque?");
         } else {

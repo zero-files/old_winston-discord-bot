@@ -7,7 +7,7 @@ export default class Math extends Command {
     readonly description = "Evalúa una expresión matemática."
 
     public executed(message:Message, ...elements:string[]):void {
-        const formula = elements.join();
+        const formula = elements.join(" ");
 
         if(!formula) {
             message.channel.send("No has introducido ninguna expresión");
