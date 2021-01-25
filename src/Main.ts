@@ -16,7 +16,7 @@ class Main {
 
         const winston = new Winston({
             name: "Winston",
-            prefix: "$",
+            prefix: "!",
             discord_client: client
         });
 
