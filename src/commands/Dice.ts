@@ -17,8 +17,12 @@ export default class Dice extends Command {
             return;
         }
 
+        const responses:string[] = [];
+
         for(let i = 0; i < a; i++) {
-            message.channel.send(`> :game_die: **${Math.floor(Math.random() * n) + 1}**`);
+            responses.push(`> :game_die: **${Math.floor(Math.random() * n) + 1}**`);
         }
+
+        message.channel.send(responses.join("\n"));
     }
 }
