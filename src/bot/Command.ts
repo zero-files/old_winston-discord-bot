@@ -53,6 +53,15 @@ export default abstract class Command extends Suscriptor<"command"> {
     public notified(command_name:string, message:Message, ...args:string[]):void {
         if(this.is_for_this(command_name)) this.executed(message, ...args);
     }
+
+    /**
+     * Retorna un elemento random de un array de strings.
+     * @param responses Lista de respuestas
+     */
+    protected random_response(responses:string[]):string {
+        const random_index = Math.floor(Math.random() * responses.length);
+        return responses[random_index];
+    }
 }
 
 /**

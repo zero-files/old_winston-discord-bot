@@ -7,6 +7,13 @@ export default class ImageSearch extends Command {
     readonly name = "img"
     readonly description = "Buscador de imágenes en google."
     private google_images:GoogleImages;
+    private responses = [
+        "No creo poder encontrar lo que pedides.",
+        "No, creo que no hay nada de eso.",
+        "Qué imagen más específica pedís.",
+        "Pides cosas que no puedo encontrar."
+
+    ]
 
     constructor(engine_id: string, api_key: string){
         super();
@@ -22,9 +29,7 @@ export default class ImageSearch extends Command {
 
     public executed(message:Message, ...words:string[]):void {
         const query = words.join(" ");
-        if(!query) {
-            message.channel.send("¿Qué imagen deseas que busque?");
-        } else {
+        if(query) {
             this.google_images.search(query)
                 .then(images => {
                     images = this.filter_lookaside(images);
@@ -38,8 +43,17 @@ export default class ImageSearch extends Command {
                     }
                 })
                 .catch(() => {
-                    message.channel.send("No creo poder encontrar lo que pedides.");
+                    const response = this.random_response(this.responses);
+                    message.channel.send(response);
                 });
-        }
+        } else message.channel.send("¿Qué imagen deseas que busque?");
     }
 }
+
+// if(images.length === 0) {
+//     message.channel.send(`No encontré nada para \`${query}\` en internet.`);
+// } else {
+//     const random_number = Math.floor((Math.random() * 5) + 1);
+//     const image_selected = images[random_number].url;
+//     message.channel.send(image_selected);
+// }
