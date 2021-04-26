@@ -38,8 +38,8 @@ export default class ImageSearch extends Command {
                     if(images.length === 0) {
                         message.channel.send(`No encontré nada para \`${query}\` en internet.`);
                     } else {
-                        const random_number = Math.floor((Math.random() * 5) + 1);
-                        const image_selected = images[random_number].url;
+                        const random_index = Math.floor((Math.random() * images.length) + 1);
+                        const image_selected = images[random_index].url;
                         message.channel.send(image_selected);
                     }
                 })
