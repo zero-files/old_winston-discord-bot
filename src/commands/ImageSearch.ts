@@ -24,7 +24,7 @@ export default class ImageSearch extends Command {
     private filter_banned_urls(images:GoogleImages.Image[]){
         return images.filter(image => {
             const url = new URL(image.url);
-            return (this.banned_urls.includes(url.hostname));
+            return !(this.banned_urls.includes(url.hostname));
         });
     }
 
