@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 import Command from "../bot/Command";
 
-export default class Dice extends Command {
+export default class Pick extends Command {
     readonly name = "pick"
     readonly description = "Elije un usuario random de las menciones dadas."
 
