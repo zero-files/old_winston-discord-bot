@@ -12,6 +12,12 @@ export default class Pick extends Command {
         }
 
         const users = message.mentions.users;
+
+        if(users.size === 0) {
+            message.channel.send("Menciona algunos usuarios a seleccionar");
+            return;
+        }
+
         const random_user = users.random(1)[0];
 
         message.channel.send(`<@${random_user.id}>, **${message.author.username}** te ha elegido aleatoriamente.`);
