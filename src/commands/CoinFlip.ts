@@ -1,8 +1,8 @@
 import { Message } from "discord.js";
 import Command from "../bot/Command";
 
-export default class FlipCoin extends Command {
-    readonly name = "flipcoin"
+export default class CoinFlip extends Command {
+    readonly name = "coinflip"
     readonly description = "Gira la moneda, ¿cara o cruz?"
     private responses = ["Ha salido: **Cara**", "Ha salido: **Cruz**"]
 

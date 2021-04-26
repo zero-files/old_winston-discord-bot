@@ -10,7 +10,7 @@ import Math from "./commands/Math";
 import ImageSearch from "./commands/ImageSearch";
 import SMN from "./commands/SMN";
 import Pick from "./commands/Pick";
-import FlipCoin from "./commands/FlipCoin";
+import CoinFlip from "./commands/CoinFlip";
 
 class Main {
     public static main(){
@@ -34,7 +34,7 @@ class Main {
             .add_command(new Ping())
             .add_command(new Math())
             .add_command(new SMN())
-            .add_command(new FlipCoin())
+            .add_command(new CoinFlip())
             .add_command(new Pick());
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
