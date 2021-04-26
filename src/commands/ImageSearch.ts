@@ -11,19 +11,20 @@ export default class ImageSearch extends Command {
         "No creo poder encontrar lo que pedides.",
         "No, creo que no hay nada de eso.",
         "Qué imagen más específica pedís.",
-        "Pides cosas que no puedo encontrar."
-
+        "Pides cosas que no puedo encontrar.",
+        "Hmmm creo que solo hay paigeeworlds como resultado."
     ]
+    private banned_urls:string[] = ["lookaside.fbsbx.com", "i.paigeeworld.com", "i.ytimg.com"]
 
     constructor(engine_id: string, api_key: string){
         super();
         this.google_images = new GoogleImages(engine_id, api_key);
     }
 
-    private filter_lookaside(images:GoogleImages.Image[]){
+    private filter_banned_urls(images:GoogleImages.Image[]){
         return images.filter(image => {
             const url = new URL(image.url);
-            return (url.hostname != "lookaside.fbsbx.com");
+            return (this.banned_urls.includes(url.hostname));
         });
     }
 
@@ -32,7 +33,7 @@ export default class ImageSearch extends Command {
         if(query) {
             this.google_images.search(query)
                 .then(images => {
-                    images = this.filter_lookaside(images);
+                    images = this.filter_banned_urls(images);
 
                     if(images.length === 0) {
                         message.channel.send(`No encontré nada para \`${query}\` en internet.`);
