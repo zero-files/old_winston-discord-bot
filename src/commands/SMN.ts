@@ -43,8 +43,9 @@ export default class SMN extends Command {
                         }
                     }
                 })
-                .catch(() => {
+                .catch(e => {
                     message.channel.send("No puedo consultar el tiempo en este momento...");
+                    console.error(e);
                 });
         }
     }
