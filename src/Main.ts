@@ -33,7 +33,6 @@ class Main {
             .add_command(new OBall())
             .add_command(new Ping())
             .add_command(new Math())
-            .add_command(new SMN())
             .add_command(new CoinFlip())
             .add_command(new Pick());
 
