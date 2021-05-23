@@ -34,7 +34,8 @@ class Main {
             .add_command(new Ping())
             .add_command(new Math())
             .add_command(new CoinFlip())
-            .add_command(new Pick());
+            .add_command(new Pick())
+            .add_command(new SMN());
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
         const google_api_key = process.env.GOOGLE_API_KEY;
