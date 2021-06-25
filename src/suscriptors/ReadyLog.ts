@@ -1,4 +1,4 @@
-import {Suscriptor} from "@lottielabs/bottie";
+import {Suscriptor} from "@enzodiazdev/bottie";
 
 export default class ReadyLog extends Suscriptor<"ready"> {
     readonly event_type:"ready" = "ready"

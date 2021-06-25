@@ -1,5 +1,5 @@
 import { Message, TextChannel } from "discord.js";
-import {Suscriptor} from "@lottielabs/bottie";
+import {Suscriptor} from "@enzodiazdev/bottie";
 
 /**
  * Clase minima para la creación de comandos.

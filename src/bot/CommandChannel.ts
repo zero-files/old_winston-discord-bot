@@ -1,4 +1,4 @@
-import {EventChannel, EventBroker} from "@lottielabs/bottie";
+import {EventChannel, EventBroker} from "@enzodiazdev/bottie";
 import { TextChannel } from "discord.js";
 
 import Command from "./Command";

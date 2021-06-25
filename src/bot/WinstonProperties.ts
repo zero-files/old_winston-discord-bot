@@ -1,4 +1,4 @@
-import {BotProperties} from "@lottielabs/bottie";
+import {BotProperties} from "@enzodiazdev/bottie";
 
 interface WinstonProperties extends BotProperties {
     name:string

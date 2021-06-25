@@ -1,4 +1,4 @@
-import Bottie from "@lottielabs/bottie";
+import Bottie from "@enzodiazdev/bottie";
 import WinstonProperties from "./WinstonProperties";
 
 import CommandChannel from "./CommandChannel";
