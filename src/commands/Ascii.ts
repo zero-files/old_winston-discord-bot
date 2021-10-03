@@ -41,17 +41,18 @@ export default class Ascii extends Command {
 ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█");
                 break;
             case "fasilito":
-                message.channel.send("━━━━-╮\
-╰┃ ┣▇━▇\
- ┃ ┃  ╰━▅╮\
- ╰┳╯ ╰━━┳╯F A S I L I T O\
-  ╰╮ ┳━━╯ \
- ▕▔▋ ╰╮╭━╮ \
-╱▔╲▋╰━┻┻╮╲╱▔▔▔╲\
-▏  ▔▔▔▔▔▔▔  O O┃\
-╲╱▔╲▂▂▂▂╱▔╲▂▂▂╱\
- ▏╳▕▇▇▕ ▏╳▕▇▇▕\
+                message.channel.send("━━━━-╮\n\
+╰┃ ┣▇━▇\n\
+ ┃ ┃  ╰━▅╮\n\
+ ╰┳╯ ╰━━┳╯F A S I L I T O\n\
+  ╰╮ ┳━━╯ \n\
+ ▕▔▋ ╰╮╭━╮ \n\
+╱▔╲▋╰━┻┻╮╲╱▔▔▔╲\n\
+▏  ▔▔▔▔▔▔▔  O O┃\n\
+╲╱▔╲▂▂▂▂╱▔╲▂▂▂╱\n\
+ ▏╳▕▇▇▕ ▏╳▕▇▇▕\n\
  ╲▂╱╲▂╱ ╲▂╱╲▂╱")
+                break;
             default:
                 message.channel.send("No tenemos ningún `"+words[0]+"` en la base de datos.");
                 break;
