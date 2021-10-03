@@ -11,6 +11,7 @@ import ImageSearch from "./commands/ImageSearch";
 import SMN from "./commands/SMN";
 import Pick from "./commands/Pick";
 import CoinFlip from "./commands/CoinFlip";
+import Ascii from "./commands/Ascii";
 
 class Main {
     public static main(){
@@ -35,7 +36,8 @@ class Main {
             .add_command(new Math())
             .add_command(new CoinFlip())
             .add_command(new Pick())
-            .add_command(new SMN());
+            .add_command(new SMN())
+            .add_command(new Ascii());
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
         const google_api_key = process.env.GOOGLE_API_KEY;
