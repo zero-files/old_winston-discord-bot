@@ -14,7 +14,7 @@ export default class ImageSearch extends Command {
         "Pides cosas que no puedo encontrar.",
         "Hmmm creo que solo hay paigeeworlds como resultado."
     ]
-    private banned_urls:string[] = ["lookaside.fbsbx.com", "i.paigeeworld.com", "i.ytimg.com"]
+    private banned_urls:string[] = ["lookaside.fbsbx.com", "i.paigeeworld.com", "i.ytimg.com", "cloudfront.net", "movistarplus.es"]
 
     constructor(engine_id: string, api_key: string){
         super();
