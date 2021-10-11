@@ -17,6 +17,7 @@ export default class Math extends Command {
                 result = evaluate(formula);
             } catch {
                 message.channel.send("No creo que pueda calcular eso.");
+                return;
             }
 
             message.channel.send(`El resultado es ${result}`);

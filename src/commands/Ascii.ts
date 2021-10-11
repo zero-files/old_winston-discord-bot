@@ -6,8 +6,13 @@ export default class Ascii extends Command {
     readonly description = "Devuelve un arte ASCII de PogChamp.";
 
     public executed(message:Message, ...words:string[]){
+        if(!words[0]){
+            message.channel.send("No has elegido ningún ASCII-art.");
+            return;
+        }
         switch (words[0].toLowerCase()) {
             case "pog":
+                message.delete();
                 message.channel.send("⠄⠄⠄⠄⠄⢠⡦⡟⠻⠛⠙⠉⠈⠄⠄⠈⠻⠛⣾⣦⣤⣀⠄⠄\n\
 ⠄⠄⠄⣰⡿⠟⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠋⠽⢿⣧⠄\n\
 ⠄⢀⣴⠞⠂⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢼⠆⠄\n\
@@ -41,6 +46,7 @@ export default class Ascii extends Command {
 ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█");
                 break;
             case "fasilito":
+                message.delete();
                 message.channel.send("━━━━-╮\n\
 ╰┃ ┣▇━▇\n\
  ┃ ┃  ╰━▅╮\n\
