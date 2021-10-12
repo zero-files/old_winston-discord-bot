@@ -28,6 +28,7 @@ export default class Clear extends Command {
                     collection.forEach((msg) => {
                         msg.delete();
                     })
+                    message.channel.send("Borrado con éxito.")
                 })
                 .catch(e => {
                     message.channel.send("No se han podido eliminar los mensajes");
