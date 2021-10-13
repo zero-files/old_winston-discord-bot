@@ -28,8 +28,8 @@ export default class Clear extends Command {
             msgsToDel.delete(message.id)
             
             if(msgsToDel.size === 0){
-                message.channel.send(`No se han encontrado mensajes de ${memberToFilter?.user.username} en `
-                                    +`los últimos ${msgNum} mensajes o ha mencionado un usuario no válido.`);
+                message.channel.send(`No se han encontrado mensajes de ${memberToFilter?.displayName} en `
+                                    +`los últimos ${msgNum} mensajes o has mencionado un usuario no válido.`);
                 return;
             }
 
@@ -45,9 +45,9 @@ export default class Clear extends Command {
             return;
         }
 
-        if(words[0] === "setLimit"){
-            if(isNaN(parseInt(words[1], 10)) || parseInt(words[0], 10) < 1000){
-                this.delLimit = parseInt(words[0], 10);
+        if(words[0] === "setlimit"){
+            if(isNaN(parseInt(words[1], 10)) || parseInt(words[1], 10) < 1000){
+                this.delLimit = parseInt(words[1], 10);
                 message.channel.send("Límite actualizado con éxito.");
                 return;
             }
@@ -55,6 +55,6 @@ export default class Clear extends Command {
             return;
         }
 
-        message.channel.send("No has introducido un número válido.")
+        message.channel.send("No has introducido un número válido.");
     }
 }
