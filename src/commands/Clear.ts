@@ -6,33 +6,34 @@ export default class Clear extends Command {
     readonly description = "Elimina tantos mensajes como se desee, excluyendo el mensaje del comando.";
 
     private delLimit = 100; 
-    public executed(message:Message, ...words:string[]){
+    public async executed(message:Message, ...words:string[]){
         if(!message.member?.permissions.has("MANAGE_MESSAGES")){
             message.channel.send("No tienes permiso para usar este comando.");
             return;
         }
         
-        const idFilter = message.mentions.members?.first();
+        const memberToFilter = message.mentions.members?.first();
         const msgNum = parseInt(words[0], 10);
 
-        if(!isNaN(msgNum)){
+        if(!isNaN(msgNum) || msgNum < 1){
             if(msgNum > this.delLimit){
                 message.channel.send(`No se pueden eliminar más de ${this.delLimit} mensajes a la vez`)
                 return;
             }
             
-            let msgsToDel = message.channel.messages.fetch({limit: msgNum, before: message.id})
+            let msgsToDel = await message.channel.messages.fetch({limit: msgNum, before: message.id})
             .then(msgCol => msgCol
-                .filter(msg => idFilter ? (msg.member === idFilter) : true)
+                .filter(msg => memberToFilter ? (msg.member === memberToFilter) : true)
             );
+            msgsToDel.delete(message.id)
             
             if(!msgsToDel){
-                message.channel.send(`No se han encontrado mensajes de ${idFilter?.user.username} en \
-                                      los últimos ${msgNum} mensajes o ha mencionado un usuario no válido.`);
+                message.channel.send(`No se han encontrado mensajes de ${memberToFilter?.user.username} en `
+                                    +`los últimos ${msgNum} mensajes o ha mencionado un usuario no válido.`);
                 return;
             }
 
-            (<TextChannel>message.channel).bulkDelete(msgNum+1)
+            (<TextChannel>message.channel).bulkDelete(msgsToDel)
             .then(() => message.channel.send("Borrado con éxito")
                 .then(msg => msg.delete({timeout: 10000}))
             )
@@ -44,6 +45,16 @@ export default class Clear extends Command {
             return;
         }
 
-        message.channel.send("No has introducido un número.")
+        if(words[0] === "setLimit"){
+            if(isNaN(parseInt(words[1], 10)) || parseInt(words[0], 10) < 1000){
+                this.delLimit = parseInt(words[0], 10);
+                message.channel.send("Límite actualizado con éxito.");
+                return;
+            }
+            message.channel.send("No ha introducido un nuevo límite válido.");
+            return;
+        }
+
+        message.channel.send("No has introducido un número válido.")
     }
 }
