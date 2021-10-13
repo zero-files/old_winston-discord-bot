@@ -27,7 +27,7 @@ export default class Clear extends Command {
             );
             msgsToDel.delete(message.id)
             
-            if(!msgsToDel){
+            if(msgsToDel.size === 0){
                 message.channel.send(`No se han encontrado mensajes de ${memberToFilter?.user.username} en `
                                     +`los últimos ${msgNum} mensajes o ha mencionado un usuario no válido.`);
                 return;
