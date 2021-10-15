@@ -15,7 +15,7 @@ export default class Clear extends Command {
         const memberToFilter = message.mentions.members?.first();
         const msgNum = parseInt(words[0], 10);
 
-        if(!isNaN(msgNum) || msgNum < 1){
+        if(msgNum > 0){ //parseInt() devuelve NaN si no puede parsear el contenido, y cualquier operación lógica devuelve false (menos 'NaN || true')
             if(msgNum > this.delLimit){
                 message.channel.send(`No se pueden eliminar más de ${this.delLimit} mensajes a la vez`)
                 return;
@@ -46,7 +46,7 @@ export default class Clear extends Command {
         }
 
         if(words[0] === "setlimit"){
-            if(isNaN(parseInt(words[1], 10)) || parseInt(words[1], 10) < 1000){
+            if(parseInt(words[1], 10) < 1000){
                 this.delLimit = parseInt(words[1], 10);
                 message.channel.send("Límite actualizado con éxito.");
                 return;

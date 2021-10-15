@@ -13,6 +13,7 @@ import Pick from "./commands/Pick";
 import CoinFlip from "./commands/CoinFlip";
 import Ascii from "./commands/Ascii";
 import Clear from "./commands/Clear";
+import Help from "./commands/Help";
 
 class Main {
     public static main(){
@@ -39,7 +40,8 @@ class Main {
             .add_command(new Pick())
             .add_command(new SMN())
             .add_command(new Ascii())
-            .add_command(new Clear());
+            .add_command(new Clear())
+            .add_command(new Help());
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
         const google_api_key = process.env.GOOGLE_API_KEY;
