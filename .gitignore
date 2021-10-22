@@ -105,3 +105,6 @@ dist
 
 #Project ignores
 *.js
+
+#Persistent instance data
+data/*

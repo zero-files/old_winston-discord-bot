@@ -12,7 +12,6 @@ export default class Ascii extends Command {
         }
         switch (words[0].toLowerCase()) {
             case "pog":
-                message.delete();
                 message.channel.send("⠄⠄⠄⠄⠄⢠⡦⡟⠻⠛⠙⠉⠈⠄⠄⠈⠻⠛⣾⣦⣤⣀⠄⠄\n\
 ⠄⠄⠄⣰⡿⠟⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠋⠽⢿⣧⠄\n\
 ⠄⢀⣴⠞⠂⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢼⠆⠄\n\
@@ -61,8 +60,8 @@ export default class Ascii extends Command {
                 break;
             default:
                 message.channel.send("No tenemos ningún `"+words[0]+"` en la base de datos.");
-                break;
+                return;
         }
-        
+        message.delete();
     }
 }

@@ -32,6 +32,7 @@ class Main {
         ready_channel.add_suscriptor(ready_log);
         winston.on("ready", ready_channel);
 
+        var help: Help = new Help();
         winston.add_command(new Dice())
             .add_command(new OBall())
             .add_command(new Ping())

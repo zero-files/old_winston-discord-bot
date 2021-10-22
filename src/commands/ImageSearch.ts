@@ -40,14 +40,17 @@ export default class ImageSearch extends Command {
                     } else {
                         const random_index = Math.floor((Math.random() * images.length) + 1);
                         const image_selected = images[random_index].url;
-                        message.channel.send(image_selected);
+                        message.channel.send({files:[image_selected]}).catch(() =>
+                            message.channel.send("El enlace obtenido está roto.")
+                        );
                     }
                 })
                 .catch(() => {
                     const response = this.random_response(this.responses);
                     message.channel.send(response);
                 });
-        } else message.channel.send("¿Qué imagen deseas que busque?");
+        }
+        else message.channel.send("¿Qué imagen deseas que busque?");
     }
 }
 
