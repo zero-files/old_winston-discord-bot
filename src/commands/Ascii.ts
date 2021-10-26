@@ -10,7 +10,7 @@ export default class Ascii extends Command {
             message.channel.send("No has elegido ningún ASCII-art.");
             return;
         }
-        switch (words[0].toLowerCase()) {
+        switch (words[0]) {
             case "pog":
                 message.channel.send("⠄⠄⠄⠄⠄⢠⡦⡟⠻⠛⠙⠉⠈⠄⠄⠈⠻⠛⣾⣦⣤⣀⠄⠄\n\
 ⠄⠄⠄⣰⡿⠟⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠋⠽⢿⣧⠄\n\
@@ -45,7 +45,6 @@ export default class Ascii extends Command {
 ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█");
                 break;
             case "fasilito":
-                message.delete();
                 message.channel.send("━━━━-╮\n\
 ╰┃ ┣▇━▇\n\
  ┃ ┃  ╰━▅╮\n\
