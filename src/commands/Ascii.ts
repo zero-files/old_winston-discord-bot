@@ -3,7 +3,7 @@ import Command from "../bot/Command";
 
 export default class Ascii extends Command {
     readonly name = "ascii";
-    readonly description = "Devuelve un arte ASCII de PogChamp.";
+    readonly description = "Devuelve un arte ASCII según la palabra clave.";
 
     public executed(message:Message, ...words:string[]){
         if(!words[0]){

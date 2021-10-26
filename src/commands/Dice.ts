@@ -3,7 +3,7 @@ import Command from "../bot/Command";
 
 export default class Dice extends Command {
     readonly name = "dice"
-    readonly description = "Arroja un número aleatorio según se indique"
+    readonly description = "Arroja un número aleatorio según se indique."
 
     public executed(message:Message, sides:string, amount:string):void {
         let n = Number(sides);
