@@ -12,8 +12,6 @@ export default class Help extends Command {
     constructor(){
         super();
         this.cmdInfos = [[]];
-        //Como no hay funcionalidad para habilitar o deshabilitar comandos esto se hace una vez nada más.
-        
         this.embed = new MessageEmbed();
     }
 
@@ -24,8 +22,10 @@ export default class Help extends Command {
     public makeEmbed(){
         (<CommandChannel>this.channel).suscriptors.forEach(command => {
             this.cmdInfos.push([(<Command>command).name, (<Command>command).description]);
+            console.log((<Command>command).name+" "+ (<Command>command).description)
         });
         let fieldData: Array<{name:string, value:string}> = [];
+
         for(const info in this.cmdInfos){
             fieldData.push({name: info[0], value: info[1]})
         }
