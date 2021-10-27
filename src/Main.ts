@@ -14,6 +14,7 @@ import CoinFlip from "./commands/CoinFlip";
 import Ascii from "./commands/Ascii";
 import Clear from "./commands/Clear";
 import Help from "./commands/Help";
+import Temp from "commands/Temp";
 
 class Main {
     public static main(){
@@ -42,6 +43,7 @@ class Main {
             .add_command(new SMN())
             .add_command(new Ascii())
             .add_command(new Clear())
+            .add_command(new Temp())
             .add_command(help);
 
         help.makeEmbed();
