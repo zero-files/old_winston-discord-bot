@@ -2,6 +2,19 @@ import CommandChannel from "../bot/CommandChannel";
 import { Message, MessageEmbed } from "discord.js";
 import Command from "../bot/Command";
 
+const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+const ARGUMENT_NAMES = /([^\s,]+)/g;
+function getParamNames(func): Array< string >
+{
+    let fnStr = func.toString().replace(STRIP_COMMENTS, '');
+    let result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+    if(result === null)
+    {
+        return [ ];
+    }
+    return result.shift( );
+}
+
 export default class Help extends Command {
     readonly name = "help";
     readonly description = "Muestra los diferentes comandos del bot.";
@@ -21,7 +34,16 @@ export default class Help extends Command {
 
     public makeEmbed(){
         (<CommandChannel>this.channel).suscriptors.forEach(command => {
-            this.cmdInfos.push([(<Command>command).name, (<Command>command).description]);
+            let cmd = (<any>command);
+            let params = getParamNames(cmd.executed);
+            let desc = (<Command>command).description;
+            if( params.length > 0 ) 
+            {
+                desc += "[ ";
+                desc += params.join( " " );
+                desc += " ]";
+            }
+            this.cmdInfos.push([(<Command>command).name, desc]);
         });
         let fieldData: Array<{name:string, value:string}> = [];
 
