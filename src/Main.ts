@@ -14,7 +14,7 @@ import CoinFlip from "./commands/CoinFlip";
 import Ascii from "./commands/Ascii";
 import Clear from "./commands/Clear";
 import Help from "./commands/Help";
-import Temp from "commands/Temp";
+import Temp from "./commands/Temp";
 
 class Main {
     public static main(){
