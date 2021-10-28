@@ -80,7 +80,7 @@ export default class Temp extends Command {
                     }
                 })
                 .catch(e => {
-                    if(e.response.data["cod"] === 404){
+                    if(e.response.data["cod"] === "404"){
                         message.channel.send(`La ciudad \`${city}\` no ha sido encontrada.`);
                         return;
                     }
