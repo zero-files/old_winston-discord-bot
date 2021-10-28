@@ -14,7 +14,8 @@ import CoinFlip from "./commands/CoinFlip";
 import Ascii from "./commands/Ascii";
 import Clear from "./commands/Clear";
 import Help from "./commands/Help";
-import Temp from "commands/Temp";
+import Temp from "./commands/Temp";
+import Image from "./commands/Image";
 
 class Main {
     public static main(){
@@ -51,6 +52,7 @@ class Main {
         const google_api_key = process.env.GOOGLE_API_KEY;
         if(google_engine_id && google_api_key){
             winston.add_command(new ImageSearch(google_engine_id, google_api_key));
+            winston.add_command(new Image(google_engine_id, google_api_key));
         }
 
         const token = process.env.BOTKEY;
