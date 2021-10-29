@@ -12,7 +12,8 @@ function getParamNames(func): Array< string >
     {
         return [ ];
     }
-    return result.shift( );
+    result.shift();
+    return result;
 }
 
 export default class Help extends Command {
