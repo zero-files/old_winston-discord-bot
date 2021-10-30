@@ -14,7 +14,7 @@ export default class ImageSearch extends Command {
         "Pides cosas que no puedo encontrar.",
         "Hmmm creo que solo hay paigeeworlds como resultado."
     ]
-    private banned_urls:string[] = ["lookaside.fbsbx.com", "i.paigeeworld.com", "i.ytimg.com", "cloudfront.net", "www.movistarplus.es"]
+    private banned_urls:Set<string> = new Set(["www.thesurfchannel.com", "www.vexmotorsports.com"]);
     #engine_id: string;
     #api_key: string;
     constructor(engine_id: string, api_key: string){
@@ -23,17 +23,16 @@ export default class ImageSearch extends Command {
         this.#api_key = api_key;
     }
 
-    private filter_banned_urls(images:GoogleImages.Image[]){
+    private filter_banned_urls(images:any[]){
         return images.filter(image => {
-            const url = new URL(image.url);
-            return !(this.banned_urls.includes(url.hostname));
+            return !(this.banned_urls.has(image.displayLink));
         });
     }
 
     public executed(message:Message, ...words:string[]):void {
         const query = words.join(" ");
         if(query) {
-            axios.get( `https://www.googleapis.com/customsearch/v1?key=${this.#api_key}&cx=${this.#engine_id}:omuauf_lfve&q=${query}` )
+            axios.get( `https://www.googleapis.com/customsearch/v1?key=${this.#api_key}&searchType=image&cx=${this.#engine_id}&q=${query}` )
                 .then(response => {
                     let images = response.data.items; // ARRAY
                     images = this.filter_banned_urls(images);
@@ -42,7 +41,7 @@ export default class ImageSearch extends Command {
                         message.channel.send(`No encontré nada para \`${query}\` en internet.`);
                     } else {
                         const random_index = Math.floor((Math.random() * images.length) + 1);
-                        const image_selected = images[random_index].url;
+                        const image_selected = images[random_index].link;
                         message.channel.send({files:[image_selected]}).catch(() =>
                             message.channel.send("El enlace obtenido está roto.")
                         );
@@ -50,7 +49,8 @@ export default class ImageSearch extends Command {
                 })
                 .catch(e => {
                     const response = this.random_response(this.responses);
-                    message.channel.send(response);
+                    message.channel.send(JSON.stringify(e));
+                    //message.channel.send(response);
                     console.error(e);
                 });
         }
