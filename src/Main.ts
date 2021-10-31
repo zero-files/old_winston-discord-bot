@@ -17,6 +17,7 @@ import Help from "./commands/Help";
 import Temp from "./commands/Temp";
 import Image from "./commands/Image";
 import Sus from "./commands/Sus";
+import Navidad from "./commands/Navidad";
 
 class Main {
     public static main(){
@@ -47,6 +48,7 @@ class Main {
             .add_command(new Clear())
             .add_command(new Temp())
             .add_command(new Sus())
+            .add_command(new Navidad())
             .add_command(help);
 
         help.makeEmbed();
