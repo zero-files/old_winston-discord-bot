@@ -22,14 +22,14 @@ export default class Sus extends Command {
                 let v: any = message.guild?.members.cache;
                 let member: GuildMember | null = v.random( );
                 let tries = 2;
-                while ( member?.displayName === message.author.username || member?.displayName === "Winston" ) {
-                    member = v.random( );
-                    --tries;
+                while ( member?.id === message.author.id ) {// || member?.displayName === "Winston" ) {
                     if( tries < 0 )
                     {
                         member = null;
                         break;
                     }
+                    member = v.random( );
+                    --tries;
                 }
                 let icon: string;
                 if( member === null ) {
@@ -43,7 +43,11 @@ export default class Sus extends Command {
                             if( member === null ) {
                                 msg.edit( `> Hemos matado a un tripulante ${icon}` );
                             } else {
-                                msg.edit( `> El impostor <@${member?.id}> ha muerto. ${icon}` );
+                                if( member?.displayName === "Winston" ) {
+                                    msg.edit( `> El impostor <@${member?.id}> ha muerto. <:desgracia:852629124375511061>` );
+                                } else {
+                                    msg.edit( `> El impostor <@${member?.id}> ha muerto. ${icon}` );
+                                }
                             }
                         }, 2500)
                     });

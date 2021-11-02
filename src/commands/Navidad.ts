@@ -19,6 +19,6 @@ export default class Navidad extends Command {
         "La Navidad comenzó en el corazón de Dios. Pero sólo se completa cuando llega al corazón del hombre."
     ];
     public executed(message:Message):void {
-        message.channel.send( this.random_response( this.#frases ) );
+        message.channel.send( `> _${this.random_response( this.#frases )}_` );
     }
 }

@@ -19,6 +19,7 @@ import Image from "./commands/Image";
 import Sus from "./commands/Sus";
 import Navidad from "./commands/Navidad";
 import Meme from "./commands/Meme";
+import Sex from "./commands/Sex";
 
 class Main {
     public static main(){
@@ -51,6 +52,7 @@ class Main {
             .add_command(new Sus())
             .add_command(new Navidad())
             .add_command(new Meme())
+            .add_command(new Sex())
             .add_command(help);
 
         help.makeEmbed();
