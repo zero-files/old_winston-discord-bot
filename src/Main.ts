@@ -20,6 +20,7 @@ import Sus from "./commands/Sus";
 import Navidad from "./commands/Navidad";
 import Meme from "./commands/Meme";
 import Sex from "./commands/Sex";
+import Random from "./commands/Random";
 
 class Main {
     public static main(){
@@ -53,6 +54,7 @@ class Main {
             .add_command(new Navidad())
             .add_command(new Meme())
             .add_command(new Sex())
+            .add_command(new Random())
             .add_command(help);
 
         help.makeEmbed();
