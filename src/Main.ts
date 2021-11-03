@@ -57,13 +57,14 @@ class Main {
             .add_command(new Random())
             .add_command(help);
 
-        help.makeEmbed();
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
         const google_api_key = process.env.GOOGLE_API_KEY;
         if(google_engine_id && google_api_key){
             winston.add_command(new ImageSearch(google_engine_id, google_api_key));
             winston.add_command(new Image(google_engine_id, google_api_key));
         }
+        
+        help.makeEmbed();
 
         const token = process.env.BOTKEY;
         if(!token) throw new Error("Bot key is not defined");

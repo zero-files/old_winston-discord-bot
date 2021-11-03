@@ -12,7 +12,7 @@ export default class Meme extends Command {
         }
         let channel = channels.join( "" );
         if( channel === "nsfw" ) {
-            message.channel.send( "Este es un canal cristiano" );
+            message.channel.send( `Este es un canal cristiano, **<@${message.author.id}>** <:dogerime:673501205607219230>` );
             return;
         }
         const random = this.random_response(this.subReddits);
