@@ -11,6 +11,10 @@ export default class Meme extends Command {
             channels = ["cursedimages"];
         }
         let channel = channels.join( "" );
+        if( channel === "nsfw" ) {
+            message.channel.send( "Este es un canal cristiano" );
+            return;
+        }
         const random = this.random_response(this.subReddits);
         axios.get( `https://www.reddit.com/r/${channel}/random/.json` )
             .then(response => {
