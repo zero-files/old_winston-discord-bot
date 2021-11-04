@@ -21,6 +21,7 @@ import Navidad from "./commands/Navidad";
 import Meme from "./commands/Meme";
 import Sex from "./commands/Sex";
 import Random from "./commands/Random";
+import NNN from "./commands/NNN";
 
 class Main {
     public static main(){
@@ -55,6 +56,7 @@ class Main {
             .add_command(new Meme())
             .add_command(new Sex())
             .add_command(new Random())
+            .add_command(new NNN())
             .add_command(help);
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
