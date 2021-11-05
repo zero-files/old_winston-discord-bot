@@ -2,7 +2,7 @@ import { Message } from "discord.js";
 import Command from "../bot/Command";
 import seed from "seed-random";
 
-export default class Dice extends Command {
+export default class OBall extends Command {
     readonly name = "8ball"
     readonly description = "Envia una respuesta al azar a una pregunta."
 
