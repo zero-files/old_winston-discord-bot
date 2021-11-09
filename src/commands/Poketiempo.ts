@@ -4,8 +4,8 @@ import axios from "axios";
 
 const API_KEY = "fe19f5c345eca91ce21223666047a8a6";
 
-export default class Temp extends Command {
-    readonly name = "temp"
+export default class Poketiempo extends Command {
+    readonly name = "poketiempo"
     readonly description = "Muestra el tiempo en cualquier lugar del mundo. !temp [city] [country]"
 
     private __capitalize(str) {
@@ -18,6 +18,40 @@ export default class Temp extends Command {
             .normalize("NFD")
             .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2")
             .normalize();
+    }
+
+    private __getPokemon(icon)
+    {
+        switch(icon){
+            case "01d":
+            case "01n":
+                return "Magmar";
+            case "02d":
+            case "02n":
+                return "Charmander";
+            case "03d":
+            case "03n":
+                return "Castform";
+            case "04d":
+            case "04n":
+                return "Swablu";
+            case "09d":
+            case "09n":
+                return "Kyogre";
+            case "10d":
+            case "10n":
+                return "Castform";
+            case "11d":
+            case "11n":
+                return "Zapdos";
+            case "13d":
+            case "13n":
+                return "Articuno";
+            case "50d":
+            case "50n":
+                return "Koffing";
+        }
+        return "Ditto";
     }
 
     private __replaceIcon(icon)
@@ -80,11 +114,11 @@ export default class Temp extends Command {
                         let icon = this.__replaceIcon( data["weather"][0]["icon"] );
                         //let icon = "http://openweathermap.org/img/wn/" + data["weather"][0]["icon"] + "@2x.png";
     
-                        let description = this.__capitalize( data["weather"][0]["description"] );
+                        let description = this.__getPokemon( data["weather"][0]["icon"] );
                         let temp = data["main"]["temp"];
                         let temp_min = data["main"]["temp_min"];
                         let temp_max = data["main"]["temp_max"];
-                        message.channel.send(`> ${icon}: En *${data.name}* (${data.sys.country}) hay __${description}__ con una temperatura de ${temp}°C sobre (${temp_min}°C, ${temp_max}°C)`);
+                        message.channel.send(`> ${icon}: En *${data.name}* (${data.sys.country}) hace __${description}__ con una temperatura de ${temp}°C sobre (${temp_min}°C, ${temp_max}°C)`);
                     } else {
                         message.channel.send(`La ciudad \`${city}\` no ha sido encontrada.`);
                     }
