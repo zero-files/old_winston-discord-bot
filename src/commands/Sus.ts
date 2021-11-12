@@ -49,6 +49,7 @@ export default class Sus extends Command {
                                     msg.edit( `> El impostor <@${member?.id}> ha muerto. ${icon}` );
                                 }
                             }
+                            message.delete( );
                         }, 2500)
                     });
         //    })
