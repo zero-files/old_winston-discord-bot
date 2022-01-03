@@ -24,6 +24,7 @@ import Random from "./commands/Random";
 import NNN from "./commands/NNN";
 import Poketiempo from "./commands/Poketiempo";
 import Dog from "./commands/Dog";
+import Billy from "./commands/Billy";
 
 class Main {
     public static main(){
@@ -61,6 +62,7 @@ class Main {
             .add_command(new NNN())
             .add_command(new Poketiempo())
             .add_command(new Dog())
+            .add_command(new Billy())
             .add_command(help);
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
