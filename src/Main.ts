@@ -59,12 +59,12 @@ class Main {
             .add_command(new Navidad())
             .add_command(new Meme())
             .add_command(new Sex())
+            .add_command(new Cat())
+            .add_command(new Billy())
             .add_command(new Random())
             .add_command(new NNN())
             .add_command(new Poketiempo())
             .add_command(new Dog())
-            .add_command(new Cat())
-            .add_command(new Billy())
             .add_command(help);
 
         const google_engine_id = process.env.GOOGLE_ENGINE_ID;
