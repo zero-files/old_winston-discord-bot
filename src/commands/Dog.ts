@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default class Dog extends Command {
     readonly name = "dog"
-    readonly description = "Unos perros"
+    readonly description = "Unos perros :3"
     public executed(message:Message):void {
         axios.get( `https://dog.ceo/api/breeds/image/random` )
             .then(response => {
